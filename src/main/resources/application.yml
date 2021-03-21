@@ -6,6 +6,11 @@ spring:
     username: sa
     password:
 
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
   jpa:
     hibernate:
       ddl-auto: create-drop # Application실행 시점에 Entity를 기준으로 Table 생성 후 Application 종료 시점에 Drop

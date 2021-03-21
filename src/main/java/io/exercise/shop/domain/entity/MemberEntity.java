@@ -1,18 +1,21 @@
 package io.exercise.shop.domain.entity;
 
-import lombok.*;
-
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity @Table(name = "member_tb")
-@Getter @Setter
-@Builder @NoArgsConstructor @AllArgsConstructor
+@Entity
 public class MemberEntity {
 
     @Id @GeneratedValue
     @Column(name = "member_no")
     private Long memberNo;
 
-    @Column(name = "member_name", length = 25, nullable = false)
     private String memberName;
+
+    @Embedded
+    private AddressValue address;
+
+    @OneToMany(mappedBy = "memberEntity")
+    private List<OrderEntity> orderEntityList = new ArrayList<>();
 }
